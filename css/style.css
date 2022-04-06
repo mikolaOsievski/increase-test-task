@@ -50,11 +50,16 @@ img {
 }
 .header__container {
   display: grid;
-  grid-template: 1fr / minmax(auto, 122px) minmax(auto, 279px) 1fr;
+  grid-template: 1fr / minmax(auto, 122px) 1fr;
   column-gap: 23px;
   padding-top: 24px;
   padding-bottom: 19px;
   border-bottom: 1px solid var(--basic-color-line);
+}
+.header__box {
+  display: grid;
+  grid-template-columns: minmax(auto, 279px) 1fr;
+  gap: 23px;
 }
 .logo,
 .contact,
@@ -207,6 +212,83 @@ p.description-layout__title {
   }
 }
 @media (max-width: 768px) {
+  /* Menu */
+  .logo {
+    z-index: 1;
+    min-height: 70px;
+  }
+  .header__menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+  }
+  .header__box {
+    display: none;
+  }
+  .header__box_open {
+    display: grid;
+    grid-template-columns: minmax(230px, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: column;
+    padding: 36px 20px;
+    background-color: var(--basic-white);
+    box-shadow: 0 50vh 0 50vh rgba(0, 0, 0, 0.6);
+  }
+  .contact {
+    min-height: 108px;
+  }
+  /* Button burger */
+  .button {
+    justify-self: end;
+    align-self: center;
+    display: block;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+  .button-burger {
+    position: relative;
+    width: 32px;
+    height: 32px;
+  }
+  .header__menu .button-burger {
+    margin-top: 44px;
+    margin-right: 20px;
+  }
+  .button-burger span,
+  .button-burger:before,
+  .button-burger:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--basic-gray-dark);
+    transition: all 0.5s ease;
+  }
+  .button-burger span {
+    top: 14px;
+  }
+  .button-burger_open span {
+    background-color: transparent;
+    transform: translate(-8px);
+    transition: all 0.1s ease;
+  }
+  .button-burger:before {
+    top: 0;
+  }
+  .button-burger_open:before {
+    transform: rotate(45deg) translate(10px, 11px);
+  }
+  .button-burger:after {
+    bottom: 0;
+  }
+  .button-burger_open:after {
+    transform: rotate(-45deg) translate(10px, -11px);
+  }
+
   .main__container {
     grid-template: min-content 1fr / 1fr;
     grid-auto-flow: column;
